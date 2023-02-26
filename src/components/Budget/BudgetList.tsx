@@ -6,7 +6,7 @@ export function BudgetList({ list, isIncome = false }: BudgetListProps) {
     <div className="p-3 bg-slate-500 rounded">
       {list.map((item: BudgetRegisterProps) => (
         <div
-          className={`flex justify-between border-b-slate-900 font-semibold ${
+          className={`flex justify-between border-b-2 border-b-slate-400 font-semibold ${
             isIncome ? "text-green-800" : "text-red-400"
           }`}
         >
