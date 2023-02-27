@@ -8,7 +8,7 @@ export default function SideBar() {
   ];
 
   return (
-    <aside className="relative col-span-2 p-2 h-screen bg-slate-800 drop-shadow-lg">
+    <aside className="relative p-2 h-screen bg-slate-800 drop-shadow-lg">
       <h1 className="mx-2 p-2 text-3xl italic font-semibold text-center">
         F-Control
       </h1>
