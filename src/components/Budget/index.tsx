@@ -1,32 +1,35 @@
-import { BudgetProps, useBudget } from "../../hooks/useBudget";
+import { useBudget } from "../../hooks/useBudget";
 import { currency } from "../../utils/monetary";
-
-const BudgetItem = ({ title, value }: BudgetProps) => {
-  return (
-    <div className="flex justify-between items-center p-1 border-b font-semibold">
-      <span>{title}</span>
-      <span>{currency(value)}</span>
-    </div>
-  );
-};
+import { BudgetItem } from "./BudgetItem";
+import { BudgetSubTitle } from "./BudgetSubTitle";
 
 export default function Budget() {
-  const { budget, totals } = useBudget();
+  const { budget, totals, getListByType } = useBudget();
 
   return (
     <div>
-      <div className="flex justify-between">
-        <h1 className="text-2xl text-green-400">
-          Entradas: {currency(totals.in)}
-        </h1>
-        <h1 className="text-2xl text-red-400">
-          Saídas: {currency(totals.out)}
-        </h1>
-      </div>
+      <h1 className="text-3xl font-semibold italic">Orçamento mensal</h1>
       <br />
-      <div>
-        {!!budget.length &&
-          budget.map((item) => <BudgetItem key={item.id} {...item} />)}
+      <div className="flex gap-6 justify-between">
+        <div className="w-full text-green-300">
+          <BudgetSubTitle color="success">
+            Entradas: {currency(totals.in)}
+          </BudgetSubTitle>
+          {!!budget.length &&
+            getListByType("in").map((item) => (
+              <BudgetItem key={item.id} {...item} />
+            ))}
+        </div>
+
+        <div className="w-full text-red-300">
+          <BudgetSubTitle color="danger">
+            Saídas: {currency(totals.out)}
+          </BudgetSubTitle>
+          {!!budget.length &&
+            getListByType("out").map((item) => (
+              <BudgetItem key={item.id} {...item} />
+            ))}
+        </div>
       </div>
     </div>
   );

@@ -41,8 +41,13 @@ export function useBudget() {
     })();
   }, []);
 
+  const getListByType = (type: string) => {
+    return budget.filter((el) => el.type === type);
+  };
+
   return {
     budget,
     totals,
+    getListByType,
   };
 }
