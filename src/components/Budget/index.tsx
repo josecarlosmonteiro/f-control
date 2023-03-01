@@ -1,32 +1,32 @@
-import { useContext } from "react";
-import { BudgetContext } from "../../contexts/BudgetProvider";
-import { currency, totalFromList } from "../../utils/monetary";
-import SimpleList from "../shared/SimpleList";
+import { BudgetProps, useBudget } from "../../hooks/useBudget";
+import { currency } from "../../utils/monetary";
+
+const BudgetItem = ({ title, value }: BudgetProps) => {
+  return (
+    <div className="flex justify-between items-center p-1 border-b font-semibold">
+      <span>{title}</span>
+      <span>{currency(value)}</span>
+    </div>
+  );
+};
 
 export default function Budget() {
-  const { filterByType } = useContext(BudgetContext);
+  const { budget, totals } = useBudget();
 
   return (
     <div>
-      <div className="text-3xl">Orçamento mensal</div>
-      <hr />
-      <br />
-      <div className="flex justify-between text-xl font-bold">
-        <div className="text-green-500">
-          Entradas: {currency(totalFromList(filterByType("in")))}
-        </div>
-        <div className="flex justify-between text-red-500">
-          Saídas {currency(totalFromList(filterByType("out")))}
-        </div>
+      <div className="flex justify-between">
+        <h1 className="text-2xl text-green-400">
+          Entradas: {currency(totals.in)}
+        </h1>
+        <h1 className="text-2xl text-red-400">
+          Saídas: {currency(totals.out)}
+        </h1>
       </div>
       <br />
-      <div className="grid grid-cols-2 gap-4">
-        <div className="w-full">
-          <SimpleList type="in" list={filterByType("in")} />
-        </div>
-        <div className="w-full">
-          <SimpleList type="out" list={filterByType("out")} />
-        </div>
+      <div>
+        {!!budget.length &&
+          budget.map((item) => <BudgetItem key={item.id} {...item} />)}
       </div>
     </div>
   );
