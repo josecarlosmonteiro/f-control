@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SideBar() {
+export function SideMenuOptions() {
   const sideFunctions: string[] = [
     "Orçamento",
     "Balanço Mensal",
@@ -14,14 +14,14 @@ export default function SideBar() {
       </h1>
       <hr />
       <div className="flex flex-col mt-3">
-        {sideFunctions.map((fn) => (
+        {/* {sideFunctions.map((fn) => (
           <div
             key={fn}
             className="p-2 border-b-2 border-b-slate-700 hover:border-b-transparent hover:bg-slate-600 duration-200 hover:px-5 cursor-pointer text-lg"
           >
             {fn}
           </div>
-        ))}
+        ))} */}
       </div>
 
       <div className="absolute bottom-2 w-full -mx-2 text-center text-sm text-slate-500">

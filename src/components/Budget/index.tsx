@@ -1,18 +1,10 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { BudgetContext } from "../../contexts/BudgetProvider";
 import { currency, totalFromList } from "../../utils/monetary";
 import SimpleList from "../shared/SimpleList";
 
 export default function Budget() {
-  const [budget, setBudget] = useState([
-    { id: 1, title: "Salário", value: 2200, type: "in" },
-    { id: 2, title: "Agiotagem", value: 750, type: "in" },
-    { id: 3, title: "Aluguel", value: 680, type: "out" },
-    { id: 4, title: "Energia", value: 112, type: "out" },
-    { id: 5, title: "Água", value: 195, type: "out" },
-  ]);
-
-  const filterByType = (type: string) =>
-    budget.filter((el) => el.type === type);
+  const { filterByType } = useContext(BudgetContext);
 
   return (
     <div>
