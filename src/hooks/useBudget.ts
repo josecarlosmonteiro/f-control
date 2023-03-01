@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../services/api";
 
 export interface BudgetProps {
-  id: string;
+  id?: string;
   title: string;
   type: "in" | "out";
   value: number | string;
@@ -22,24 +22,34 @@ export function useBudget() {
       const { data } = await api.get("budget");
 
       setBudget(data);
-      setTotals({
-        in: data
-          .filter((el: BudgetProps) => el.type === "in")
-          .reduce(
-            (prev: number, current: BudgetProps) =>
-              prev + Number(current.value),
-            0
-          ),
-        out: data
-          .filter((el: BudgetProps) => el.type === "out")
-          .reduce(
-            (prev: number, current: BudgetProps) =>
-              prev + Number(current.value),
-            0
-          ),
-      });
     })();
   }, []);
+
+  useEffect(() => {
+    setTotals({
+      in: budget
+        .filter((el: BudgetProps) => el.type === "in")
+        .reduce(
+          (prev: number, current: BudgetProps) => prev + Number(current.value),
+          0
+        ),
+      out: budget
+        .filter((el: BudgetProps) => el.type === "out")
+        .reduce(
+          (prev: number, current: BudgetProps) => prev + Number(current.value),
+          0
+        ),
+    });
+  }, [budget]);
+
+  const addBudgetItem = async (newItem: BudgetProps) => {
+    try {
+      await api.post("budget", newItem);
+      return setBudget((oldState) => [...oldState, newItem]);
+    } catch {
+      console.error("Erro ao cadastrar item no orçamento.");
+    }
+  };
 
   const getListByType = (type: string) => {
     return budget.filter((el) => el.type === type);
@@ -49,5 +59,6 @@ export function useBudget() {
     budget,
     totals,
     getListByType,
+    addBudgetItem,
   };
 }

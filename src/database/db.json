@@ -17,6 +17,42 @@
       "title": "Internet",
       "type": "out",
       "value": 80
+    },
+    {
+      "title": "Energia",
+      "value": "98",
+      "type": "out",
+      "id": "NoAo_I6"
+    },
+    {
+      "title": "Água",
+      "value": "210",
+      "type": "out",
+      "id": "HB2ykEw"
+    },
+    {
+      "title": "Pensão",
+      "value": "800",
+      "type": "out",
+      "id": "R7Vdml7"
+    },
+    {
+      "title": "Agiotagem ",
+      "value": "560",
+      "type": "in",
+      "id": "TkDXasI"
+    },
+    {
+      "title": "mais agiotagem",
+      "value": "200",
+      "type": "in",
+      "id": "WbkRD5X"
+    },
+    {
+      "title": "vacilos",
+      "value": "200",
+      "type": "out",
+      "id": "9V1V96u"
     }
   ]
 }

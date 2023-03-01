@@ -26,7 +26,7 @@ export function BudgetShowListType({
       </BudgetSubTitle>
       {!!budget.length &&
         getListByType(totalReference).map((item) => (
-          <BudgetItem key={item.id} {...item} />
+          <BudgetItem key={item.title} {...item} />
         ))}
     </div>
   );
