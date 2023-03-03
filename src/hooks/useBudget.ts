@@ -1,64 +1,43 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { BudgetProps } from "../interfaces/Budget";
 import { api } from "../services/api";
 
-export interface BudgetProps {
-  id?: string;
-  title: string;
-  type: "in" | "out";
-  value: number | string;
-}
+export function useBudget(initialBudget: BudgetProps[]) {
+  const [list, setList] = useState(initialBudget);
 
-interface TotalsProps {
-  in: number;
-  out: number;
-}
+  const getBudget = async () => {
+    const { data } = await api.get("budget");
+    return data;
+  };
 
-export function useBudget() {
-  const [budget, setBudget] = useState<BudgetProps[]>([]);
-  const [totals, setTotals] = useState<TotalsProps>({ in: 0, out: 0 });
-
-  useEffect(() => {
-    (async function () {
-      const { data } = await api.get("budget");
-
-      setBudget(data);
-    })();
-  }, []);
-
-  useEffect(() => {
-    setTotals({
-      in: budget
-        .filter((el: BudgetProps) => el.type === "in")
-        .reduce(
-          (prev: number, current: BudgetProps) => prev + Number(current.value),
-          0
-        ),
-      out: budget
-        .filter((el: BudgetProps) => el.type === "out")
-        .reduce(
-          (prev: number, current: BudgetProps) => prev + Number(current.value),
-          0
-        ),
-    });
-  }, [budget]);
-
-  const addBudgetItem = async (newItem: BudgetProps) => {
+  const addRegister = async (newItem: BudgetProps) => {
     try {
-      await api.post("budget", newItem);
-      return setBudget((oldState) => [...oldState, newItem]);
+      const { data } = await api.post("budget", newItem);
+      setList([...list, data]);
     } catch {
-      console.error("Erro ao cadastrar item no orçamento.");
+      console.error("Um erro ocorreu ao adicionar novo registro no orçamento.");
     }
   };
 
-  const getListByType = (type: string) => {
-    return budget.filter((el) => el.type === type);
+  const removeRegister = async (itemRemove: BudgetProps) => {
+    try {
+      await api.delete(`budget/${itemRemove.id}`);
+      console.log("Item removido com sucesso!");
+
+      const index = list.findIndex((item) => item.id === itemRemove.id);
+      const newList = [...list];
+      newList.splice(index, 1);
+
+      return newList;
+    } catch {
+      console.error("Um erro ocorreu ao remover item do orçamento.");
+    }
   };
 
   return {
-    budget,
-    totals,
-    getListByType,
-    addBudgetItem,
+    list,
+    getBudget,
+    addRegister,
+    removeRegister,
   };
 }
