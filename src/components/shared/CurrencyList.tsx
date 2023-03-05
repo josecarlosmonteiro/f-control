@@ -3,7 +3,7 @@ import { currency } from "../../utils/monetary";
 
 export function CurrencyList({ list }: any) {
   return (
-    <div className="w-full stripped">
+    <div className="w-full stripped max-h-52 overflow-auto">
       {list.map((item: any) => (
         <div
           key={item.id}

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 
 import { AiOutlineDollar } from "react-icons/ai";
 import { BudgetContext } from "../../contexts/BudgetProvider";
-import { BudgetProps } from "../../interfaces/Budget";
+import { BudgetItemProps } from "../../interfaces/Budget";
 import { CurrencyList } from "../shared/CurrencyList";
 import { Modal } from "../shared/Modal";
 import { BudgetList } from "./BudgetList";
@@ -11,7 +11,7 @@ import { filterByType, totalByType } from "../../utils/lists";
 import { NewItemForm } from "./NewItemForm";
 
 export function Budget() {
-  const { budget }: { budget: BudgetProps[] } = useContext(BudgetContext);
+  const { budget }: { budget: BudgetItemProps[] } = useContext(BudgetContext);
 
   const [revenuesModal, setRevenuesModal] = useState<boolean>(false);
   const [expensesModal, setExpensesModal] = useState<boolean>(false);
@@ -20,7 +20,6 @@ export function Budget() {
     <div>
       <h1 className="my-2 mb-4 italic flex justify-between text-3xl">
         Orçamento mensal
-        <button className="p-1 px-4 border radius text-lg">Add</button>
       </h1>
       <div className="flex justify-between gap-4 mb-4">
         <TotalInfo
@@ -37,12 +36,21 @@ export function Budget() {
         />
       </div>
       <div className="flex justify-between gap-4">
-        <div className="w-full">
-          <BudgetList list={filterByType(budget, "in")} />
-        </div>
-        <div className="w-full">
-          <BudgetList list={filterByType(budget, "out")} />
-        </div>
+        {!!budget.length ? (
+          <>
+            <div className="w-full">
+              <BudgetList list={filterByType(budget, "in")} />
+            </div>
+            <div className="w-full">
+              <BudgetList list={filterByType(budget, "out")} />
+            </div>
+          </>
+        ) : (
+          <div>
+            Clique em uma das sessões acima para iniciar seus lançamentos
+            mensais.
+          </div>
+        )}
       </div>
 
       <Modal
@@ -58,7 +66,7 @@ export function Budget() {
         <div className="text-green-600">
           <CurrencyList list={filterByType(budget, "in")} />
         </div>
-        <NewItemForm />
+        <NewItemForm type="in" />
       </Modal>
 
       <Modal
@@ -74,7 +82,7 @@ export function Budget() {
         <div className="text-red-600">
           <CurrencyList list={filterByType(budget, "out")} />
         </div>
-        <NewItemForm />
+        <NewItemForm type="out" />
       </Modal>
     </div>
   );

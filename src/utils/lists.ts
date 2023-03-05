@@ -1,9 +1,16 @@
-import { BudgetProps } from "../interfaces/Budget";
+import { BudgetItemProps } from "../interfaces/Budget";
 
-export const filterByType = (list: BudgetProps[], type: "in" | "out") =>
-  list.filter((el) => el.type === type);
+export const filterByType = (list: BudgetItemProps[], type: "in" | "out") =>
+  list
+    .filter((el) => el.type === type)
+    .sort((a, b) => {
+      if (Number(a.value) > Number(b.value)) return -1;
+      if (Number(a.value) < Number(b.value)) return 1;
 
-export const totalByType = (list: BudgetProps[], type: "in" | "out") =>
+      return 0;
+    });
+
+export const totalByType = (list: BudgetItemProps[], type: "in" | "out") =>
   filterByType(list, type).reduce(
     (prev, current) => prev + Number(current.value),
     0

@@ -1,6 +1,6 @@
 import { MouseEventHandler } from "react";
 
-export interface BudgetProps {
+export interface BudgetItemProps {
   id: string;
   title: string;
   type: "in" | "out";
@@ -8,9 +8,10 @@ export interface BudgetProps {
 }
 
 export interface BudgetContextProps {
-  budget: BudgetProps[];
+  budget: BudgetItemProps[];
   totals: Record<"in" | "out", number>;
-  listByType: Record<"in" | "out", BudgetProps[]>;
+  listByType: Record<"in" | "out", BudgetItemProps[]>;
+  addRegister: Function;
 }
 
 export interface TotalInfoProps {

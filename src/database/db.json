@@ -1,28 +1,70 @@
 {
   "budget": [
     {
-      "id": "1",
-      "title": "Salário",
       "type": "in",
-      "value": 1000
+      "title": "Salário",
+      "value": "2000",
+      "id": "aedqwer"
     },
     {
-      "id": "2",
+      "type": "in",
+      "title": "Ajuda de custo",
+      "value": "500",
+      "id": "qweqwe"
+    },
+    {
+      "type": "out",
       "title": "Aluguel",
-      "type": "out",
-      "value": 400
+      "value": "1000",
+      "id": "HHdkpCE"
     },
     {
-      "id": "3",
-      "title": "Internet",
       "type": "out",
-      "value": 80
+      "title": "Energia",
+      "value": "220",
+      "id": "21ZC_yH"
+    },
+    {
+      "title": "Netflix",
+      "value": "55.9",
+      "type": "out",
+      "id": "qeuug3_"
+    },
+    {
+      "title": "Amazon",
+      "value": "15.90",
+      "type": "out",
+      "id": "pU2BoNW"
     },
     {
       "title": "Água",
-      "value": "210",
+      "value": "98",
       "type": "out",
-      "id": "HB2ykEw"
+      "id": "B-3RrVd"
+    },
+    {
+      "title": "Gatos",
+      "value": "200",
+      "type": "out",
+      "id": "iWtLWiN"
+    },
+    {
+      "title": "Psiquiatra (Taly)",
+      "value": "190",
+      "type": "out",
+      "id": "Uz2NYxh"
+    },
+    {
+      "title": "Psicóloga",
+      "value": "200",
+      "type": "out",
+      "id": "94r5Ipt"
+    },
+    {
+      "title": "Internet",
+      "value": "70",
+      "type": "out",
+      "id": "nhEBnA8"
     }
   ]
 }

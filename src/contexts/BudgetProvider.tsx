@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { useBudget } from "../hooks/useBudget";
-import { BudgetContextProps, BudgetProps } from "../interfaces/Budget";
+import { BudgetContextProps, BudgetItemProps } from "../interfaces/Budget";
+import { api } from "../services/api";
 import { filterByType, totalByType } from "../utils/lists";
 
 export const BudgetContext = createContext<any>({});
@@ -13,30 +13,46 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
     out: 0,
   });
 
-  const [listByType, setListByType] = useState<Record<string, BudgetProps[]>>({
+  const [listByType, setListByType] = useState<
+    Record<string, BudgetItemProps[]>
+  >({
     in: [],
     out: [],
   });
 
-  const { getBudget } = useBudget(budget);
-
   useEffect(() => {
-    getBudget().then((res) => {
-      setBudget(res);
+    (async function () {
+      const { data } = await api.get("budget");
+
+      setBudget(data);
 
       setTotals({
-        in: totalByType(res, "in"),
-        out: totalByType(res, "out"),
+        in: totalByType(data, "in"),
+        out: totalByType(data, "out"),
       });
 
       setListByType({
-        in: filterByType(res, "in"),
-        out: filterByType(res, "out"),
+        in: filterByType(data, "in"),
+        out: filterByType(data, "out"),
       });
-    });
+    })();
   }, []);
 
-  const context: BudgetContextProps = { budget, totals, listByType };
+  const addRegister = async (newItem: BudgetItemProps) => {
+    try {
+      const { data } = await api.post("budget", newItem);
+      setBudget((state) => state.concat(data));
+    } catch {
+      console.error("Erro ao adicionar registro de orçamento.");
+    }
+  };
+
+  const context: BudgetContextProps = {
+    budget,
+    totals,
+    listByType,
+    addRegister,
+  };
 
   return (
     <BudgetContext.Provider value={context}>{children}</BudgetContext.Provider>
