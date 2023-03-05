@@ -15,3 +15,6 @@ export const totalByType = (list: BudgetItemProps[], type: "in" | "out") =>
     (prev, current) => prev + Number(current.value),
     0
   );
+
+export const amount = (list: BudgetItemProps[]) =>
+  list.reduce((prev, current) => prev + Number(current.value), 0);

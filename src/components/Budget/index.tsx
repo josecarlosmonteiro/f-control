@@ -7,11 +7,19 @@ import { CurrencyList } from "../shared/CurrencyList";
 import { Modal } from "../shared/Modal";
 import { BudgetList } from "./BudgetList";
 import { TotalInfo } from "./TotalInfo";
-import { filterByType, totalByType } from "../../utils/lists";
+import { amount, filterByType, totalByType } from "../../utils/lists";
 import { NewItemForm } from "./NewItemForm";
+import { currency } from "../../utils/monetary";
+import { BudgetComparation } from "./BudgetComparation";
 
 export function Budget() {
-  const { budget }: { budget: BudgetItemProps[] } = useContext(BudgetContext);
+  const {
+    budget,
+    totals,
+  }: {
+    budget: BudgetItemProps[];
+    totals: Record<"in" | "out", number>;
+  } = useContext(BudgetContext);
 
   const [revenuesModal, setRevenuesModal] = useState<boolean>(false);
   const [expensesModal, setExpensesModal] = useState<boolean>(false);
@@ -35,6 +43,12 @@ export function Budget() {
           clickFn={() => setExpensesModal(true)}
         />
       </div>
+
+      <BudgetComparation
+        amount={amount(budget)}
+        revenues={totalByType(budget, "in")}
+      />
+
       <div className="flex justify-between gap-4">
         {!!budget.length ? (
           <>
@@ -58,9 +72,12 @@ export function Budget() {
         closeFn={() => setRevenuesModal(false)}
         open={revenuesModal}
         trailingIcon={
-          <i className="text-green-600">
-            <AiOutlineDollar />
-          </i>
+          <div className="mb-1 flex items-center text-xl">
+            ({currency(totalByType(budget, "in"))})
+            <i className="text-green-600 ml-2 mt-1">
+              <AiOutlineDollar />
+            </i>
+          </div>
         }
       >
         <div className="text-green-600">
@@ -74,9 +91,12 @@ export function Budget() {
         closeFn={() => setExpensesModal(false)}
         open={expensesModal}
         trailingIcon={
-          <i className="text-red-600">
-            <AiOutlineDollar />
-          </i>
+          <div className="mb-1 flex items-center text-xl">
+            ({currency(totalByType(budget, "out"))})
+            <i className="text-red-600 ml-2 mt-1">
+              <AiOutlineDollar />
+            </i>
+          </div>
         }
       >
         <div className="text-red-600">

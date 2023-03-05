@@ -1,70 +1,34 @@
 {
   "budget": [
     {
-      "type": "in",
       "title": "Salário",
-      "value": "2000",
-      "id": "aedqwer"
-    },
-    {
+      "value": "4500",
       "type": "in",
-      "title": "Ajuda de custo",
-      "value": "500",
-      "id": "qweqwe"
+      "id": 1
     },
     {
-      "type": "out",
       "title": "Aluguel",
       "value": "1000",
-      "id": "HHdkpCE"
-    },
-    {
       "type": "out",
-      "title": "Energia",
-      "value": "220",
-      "id": "21ZC_yH"
-    },
-    {
-      "title": "Netflix",
-      "value": "55.9",
-      "type": "out",
-      "id": "qeuug3_"
-    },
-    {
-      "title": "Amazon",
-      "value": "15.90",
-      "type": "out",
-      "id": "pU2BoNW"
-    },
-    {
-      "title": "Água",
-      "value": "98",
-      "type": "out",
-      "id": "B-3RrVd"
+      "id": 2
     },
     {
       "title": "Gatos",
       "value": "200",
       "type": "out",
-      "id": "iWtLWiN"
-    },
-    {
-      "title": "Psiquiatra (Taly)",
-      "value": "190",
-      "type": "out",
-      "id": "Uz2NYxh"
-    },
-    {
-      "title": "Psicóloga",
-      "value": "200",
-      "type": "out",
-      "id": "94r5Ipt"
+      "id": 3
     },
     {
       "title": "Internet",
       "value": "70",
       "type": "out",
-      "id": "nhEBnA8"
+      "id": 4
+    },
+    {
+      "title": "agiota",
+      "value": "2000",
+      "type": "out",
+      "id": 5
     }
   ]
 }
