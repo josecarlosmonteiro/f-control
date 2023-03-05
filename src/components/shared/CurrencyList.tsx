@@ -1,5 +1,4 @@
-import { AiFillEdit } from "react-icons/ai";
-import { BiEdit } from 'react-icons/bi';
+import { BiEdit } from "react-icons/bi";
 import { currency } from "../../utils/monetary";
 
 export function CurrencyList({ list }: any) {
