@@ -10,8 +10,6 @@ const ListItem = ({ lineValues }: { lineValues: any[] }) => (
 );
 
 export function BudgetList({ list }: { list: BudgetItemProps[] }) {
-  console.log("🚀 ~ file: BudgetList.tsx:13 ~ BudgetList ~ list:", list);
-
   return (
     <div className="flex pb-2 justify-between gap-4">
       <div className="w-full stripped max-h-40 overflow-auto">

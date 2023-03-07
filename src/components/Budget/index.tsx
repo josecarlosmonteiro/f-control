@@ -15,7 +15,6 @@ import { BudgetComparation } from "./BudgetComparation";
 export function Budget() {
   const {
     budget,
-    totals,
   }: {
     budget: BudgetItemProps[];
     totals: Record<"in" | "out", number>;

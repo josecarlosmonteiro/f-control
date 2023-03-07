@@ -12,6 +12,7 @@ export interface BudgetContextProps {
   totals: Record<"in" | "out", number>;
   listByType: Record<"in" | "out", BudgetItemProps[]>;
   addRegister: Function;
+  removeRegister: Function;
 }
 
 export interface TotalInfoProps {

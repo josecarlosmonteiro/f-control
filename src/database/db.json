@@ -1,34 +1,3 @@
 {
-  "budget": [
-    {
-      "title": "Salário",
-      "value": "4500",
-      "type": "in",
-      "id": 1
-    },
-    {
-      "title": "Aluguel",
-      "value": "1000",
-      "type": "out",
-      "id": 2
-    },
-    {
-      "title": "Gatos",
-      "value": "200",
-      "type": "out",
-      "id": 3
-    },
-    {
-      "title": "Internet",
-      "value": "70",
-      "type": "out",
-      "id": 4
-    },
-    {
-      "title": "agiota",
-      "value": "2000",
-      "type": "out",
-      "id": 5
-    }
-  ]
+  "budget": []
 }

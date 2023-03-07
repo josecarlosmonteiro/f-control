@@ -47,11 +47,27 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const removeRegister = async (itemId: string) => {
+    try {
+      await api.delete(`budget/${itemId}`);
+
+      const newState = [...budget];
+      newState.splice(
+        budget.findIndex((el: BudgetItemProps) => el.id === itemId),
+        1
+      );
+      setBudget(newState);
+    } catch {
+      console.error("Erro ao remover registro de orçamento.");
+    }
+  };
+
   const context: BudgetContextProps = {
     budget,
     totals,
     listByType,
     addRegister,
+    removeRegister,
   };
 
   return (
