@@ -1,3 +1,106 @@
 {
-  "budget": []
+  "budget": [
+    {
+      "title": "Salário",
+      "value": "4500",
+      "type": "in",
+      "id": 1
+    },
+    {
+      "title": "Aluguel",
+      "value": "1000",
+      "type": "out",
+      "id": 2
+    },
+    {
+      "title": "energia",
+      "value": "230",
+      "type": "out",
+      "id": 3
+    },
+    {
+      "title": "água",
+      "value": "98",
+      "type": "out",
+      "id": 4
+    },
+    {
+      "title": "internet",
+      "value": "70",
+      "type": "out",
+      "id": 5
+    },
+    {
+      "title": "Netflix",
+      "value": "56.90",
+      "type": "out",
+      "id": 6
+    },
+    {
+      "title": "Prime",
+      "value": "16",
+      "type": "out",
+      "id": 7
+    },
+    {
+      "title": "Escola João",
+      "value": "320",
+      "type": "out",
+      "id": 8
+    },
+    {
+      "title": "Claro Móvel",
+      "value": "40",
+      "type": "out",
+      "id": 9
+    },
+    {
+      "title": "Dentista",
+      "value": "80",
+      "type": "out",
+      "id": 10
+    },
+    {
+      "title": "Terapia - Talyta",
+      "value": "200",
+      "type": "out",
+      "id": 11
+    },
+    {
+      "title": "Terapia - Carlos",
+      "value": "260",
+      "type": "out",
+      "id": 12
+    },
+    {
+      "title": "Spotify - Talyta",
+      "value": "8",
+      "type": "out",
+      "id": 13
+    },
+    {
+      "title": "Plano de Saúde - Talyta",
+      "value": "28",
+      "type": "out",
+      "id": 14
+    },
+    {
+      "title": "Prime - Talyta",
+      "value": "15",
+      "type": "out",
+      "id": 15
+    },
+    {
+      "title": "Psiquiatra - Talyta",
+      "value": "150",
+      "type": "out",
+      "id": 16
+    },
+    {
+      "title": "Unhas",
+      "value": "75",
+      "type": "out",
+      "id": 17
+    }
+  ]
 }

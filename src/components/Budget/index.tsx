@@ -7,10 +7,11 @@ import { CurrencyList } from "../shared/CurrencyList";
 import { Modal } from "../shared/Modal";
 import { BudgetList } from "./BudgetList";
 import { TotalInfo } from "./TotalInfo";
-import { amount, filterByType, totalByType } from "../../utils/lists";
 import { NewItemForm } from "./NewItemForm";
-import { currency } from "../../utils/monetary";
 import { BudgetComparation } from "./BudgetComparation";
+
+import { filterByType, totalByType } from "../../utils/lists";
+import { currency } from "../../utils/monetary";
 
 export function Budget() {
   const {
@@ -25,9 +26,6 @@ export function Budget() {
 
   return (
     <div>
-      <h1 className="my-2 mb-4 italic flex justify-between text-3xl">
-        Orçamento mensal
-      </h1>
       <div className="flex justify-between gap-4 mb-4">
         <TotalInfo
           title="Entradas"
@@ -43,10 +41,7 @@ export function Budget() {
         />
       </div>
 
-      <BudgetComparation
-        amount={amount(budget)}
-        revenues={totalByType(budget, "in")}
-      />
+      <BudgetComparation />
 
       <div className="flex justify-between gap-4">
         {!!budget.length ? (
@@ -98,6 +93,7 @@ export function Budget() {
           </div>
         }
       >
+        <BudgetComparation />
         <div className="text-red-600">
           <CurrencyList list={filterByType(budget, "out")} />
         </div>

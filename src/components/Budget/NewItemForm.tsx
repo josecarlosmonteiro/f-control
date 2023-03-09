@@ -11,8 +11,7 @@ export function NewItemForm({ type }: { type: string }) {
 
   const onSubmit = (data: any) => {
     addRegister({ ...data, type });
-    reset();
-    setFocus("title");
+    setFocus("title", { shouldSelect: true });
   };
 
   return (
