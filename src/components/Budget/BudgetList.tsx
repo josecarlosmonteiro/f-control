@@ -4,7 +4,7 @@ import { currency } from "../../utils/monetary";
 const ListItem = ({ lineValues }: { lineValues: any[] }) => (
   <div className="p-1 flex justify-between">
     {lineValues.map((value) => (
-      <div>{value}</div>
+      <div className="text-sm">{value}</div>
     ))}
   </div>
 );
@@ -12,7 +12,7 @@ const ListItem = ({ lineValues }: { lineValues: any[] }) => (
 export function BudgetList({ list }: { list: BudgetItemProps[] }) {
   return (
     <div className="flex pb-2 justify-between gap-4">
-      <div className="w-full stripped max-h-40 overflow-auto">
+      <div className="w-full stripped max-h-40 overflow-auto scrollbar">
         {list.map((item) => (
           <ListItem
             key={item.id + "-key"}

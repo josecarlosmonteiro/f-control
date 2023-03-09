@@ -19,7 +19,7 @@ export function ChartData({ type, labels, data }: ChartDataProps) {
       type,
       data: {
         labels,
-        datasets: [{ data, backgroundColor: "#c73c55" }],
+        datasets: [{ data, backgroundColor: "#e4627a" }],
       },
       options: {
         plugins: {
@@ -33,5 +33,5 @@ export function ChartData({ type, labels, data }: ChartDataProps) {
     return () => container.removeChild(container.children[0]);
   }, [data, labels, type]);
 
-  return <div className="block h-full" ref={chartContainer}></div>;
+  return <div className="block h-full w-full" ref={chartContainer}></div>;
 }

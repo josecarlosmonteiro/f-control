@@ -66,17 +66,18 @@ export function Budget() {
         closeFn={() => setRevenuesModal(false)}
         open={revenuesModal}
         trailingIcon={
-          <div className="mb-1 flex items-center text-xl">
+          <div className="pb-2 flex items-center">
             ({currency(totalByType(budget, "in"))})
-            <i className="text-green-600 ml-2 mt-1">
+            <span className="text-green-600 ml-2 mt-1">
               <AiOutlineDollar />
-            </i>
+            </span>
           </div>
         }
       >
         <div className="text-green-600">
           <CurrencyList list={filterByType(budget, "in")} />
         </div>
+        <br />
         <NewItemForm type="in" />
       </Modal>
 

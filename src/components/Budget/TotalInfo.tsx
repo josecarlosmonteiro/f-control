@@ -15,7 +15,7 @@ export function TotalInfo({
 }: TotalInfoProps) {
   return (
     <div
-      className={`w-full flex justify-between p-2 text-white ${bgColorMap[bg]} text-xl rounded cursor-pointer duration-150 hover:shadow-md hover:animate-pulse`}
+      className={`w-full flex justify-between p-2 text-white font-semibold ${bgColorMap[bg]} rounded cursor-pointer duration-150 hover:shadow-md hover:animate-pulse`}
       onClick={clickFn}
     >
       <div>{title}</div>
